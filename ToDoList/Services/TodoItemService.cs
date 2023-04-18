@@ -22,6 +22,8 @@
             item2.Title = item.Title;
             item2.Description = item.Description;
             item2.Category = item.Category;
+            item2.CreatedAt = DateTime.Now;
+            item2.UpdatedAt = DateTime.Now;
             _todoItems.Add(item2);
 
             return item2;
@@ -49,6 +51,7 @@
             item.Title = updatedItem.Title;
             item.Description = updatedItem.Description;
             item.Category = updatedItem.Category;
+            item.UpdatedAt = DateTime.Now;
 
             return item;
         }
