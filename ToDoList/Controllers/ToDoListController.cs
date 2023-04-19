@@ -17,10 +17,18 @@ namespace TodoListAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<TodoItem>> GetAll([FromQuery] Category? category = null)
         {
-            return Ok(todoItemService.GetAll());
+            if (category != null)
+            {
+                return Ok(todoItemService.GetAll().Where(item => item.Category == category));
+            }
+            else
+            {
+                return Ok(todoItemService.GetAll());
+            }
         }
 
-        
+
+
         [HttpGet("{id:Guid}")]
         public ActionResult<TodoItem> GetById(Guid id)
         {
